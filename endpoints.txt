@@ -1,0 +1,49 @@
+Spec:
+
+/specs
+/spec/{id}
+/delete_spec/{id}
+/add_spec - {"name":"Монтаж"}
+/update_spec - {"id": 2, "name":"Монтаж"}
+
+------------------------------------------------------------------------------------------------------
+
+Groups:
+
+/groups
+/group_by_spec/{id}
+/add_group - {"name":"ОК-31", "id_spec": 2}
+/update_group - {"id": 2, "name":"ОК-31", "id_spec": 2}
+/delete_group/{id}
+
+-------------------------------------------------------------------------------------------------------
+
+Students:
+
+/students
+/student/{id}
+/student_by_group/{id}
+/delete_student/{id}
+/add_student - {"name":"Богдан".....}
+/update_student - {"id": 2, "name":"Богдан".....}
+
+-------------------------------------------------------------------------------------------------------
+
+Subjects:
+
+/subjects
+/subject_by_group_and_sem/{idGroup}/{idSemester}
+/subject_by_group/{idGroup}
+/add_subject
+/edit_subject
+/delete_subject/{id}
+
+-------------------------------------------------------------------------------------------------------
+
+Marks:
+
+/get_mark_by_group/{id}
+/get_mark_by_student/{id}
+/delete/{id}
+/edit_mark
+/add_mark

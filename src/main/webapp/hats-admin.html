@@ -40,23 +40,52 @@
     <!--===============================================================================================-->
 </head>
 <body ng-app="main" ng-controller="adminController">
-<form class="col-sm-6" style="margin: 20% auto; vertical-align: middle">
+<form class="col-sm-6" style="margin: 10% auto; vertical-align: middle">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name">
+        <input type="text" class="form-control" id="name" ng-model="name">
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" >
+        <input type="number" class="form-control" id="price" ng-model="price">
+    </div>
+
+     <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" class="form-control" id="amount" ng-model="amount">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" maxlength="512" rows="5" class="form-control" ng-model="description"></textarea>
     </div>
 
     <div class="form-group">
         <label for="category">Category</label>
-        <select id="category" class="form-control" ng-options="category as category.name for category in categories" ng-model="selectedCategory"></select>
+        <select id="category" class="form-control" ng-options="category as category.name for category in categories" ng-model="category"></select>
     </div>
 
-    <input type="file" id="input">
+    <div class="filter-col3 p-r-15 p-b-27">
+        <div class="mtext-102 cl2 p-b-15">
+            Color
+        </div>
 
+        <ul>
+            <li class="p-b-6" ng-click="activateColor(color)" ng-repeat="color in colors">
+                <span class="fs-15 lh-12 m-r-6" ng-style="getColor(color)">
+                    <i class="zmdi zmdi-circle"></i>
+                </span>
+
+                <a class="filter-link stext-106 trans-04" style="cursor: pointer">
+                    {{color.name}}
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <input type="file" id="input" multiple>
 
     <button type="submit" ng-click="upload()" class="btn btn-primary">Submit</button>
 </form>

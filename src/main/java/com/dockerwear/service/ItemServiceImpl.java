@@ -26,4 +26,9 @@ public class ItemServiceImpl implements ItemService {
     public List<Category> getCategories() {
         return categoryDao.findAll();
     }
+
+    @Override
+    public Item saveItem(Item item) {
+        return itemDao.save(item);
+    }
 }

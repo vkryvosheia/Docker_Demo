@@ -1,6 +1,7 @@
 package com.dockerwear.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "items")
@@ -12,13 +13,17 @@ public class Item {
     @Column
     private String name;
     @Column
-    private String type;
+    private String category;
     @Column
-    private String color;
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "items_colors",
+            joinColumns = { @JoinColumn(name = "item_id") },
+            inverseJoinColumns = { @JoinColumn(name = "color_id") }
+    )
+    private List<Color> colors;
     @Column
     private int amount;
-    @Column
-    private String size;
     @Column
     private String src;
     @Column
@@ -27,13 +32,12 @@ public class Item {
 
     public Item(){}
     
-    public Item(int id, String name, String type, String color, int amount, String size, String src, double price) {
+    public Item(int id, String name, String category, List<Color> colors, int amount, String src, double price) {
         this.id = id;
         this.name = name;
-        this.type = type;
-        this.color = color;
+        this.category = category;
+        this.colors = colors;
         this.amount = amount;
-        this.size = size;
         this.src = src;
         this.price = price;
     }
@@ -54,20 +58,20 @@ public class Item {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getColor() {
-        return color;
+    public List<Color> getColors() {
+        return colors;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColors(List<Color> colors) {
+        this.colors = colors;
     }
 
     public int getAmount() {
@@ -76,14 +80,6 @@ public class Item {
 
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public String getSrc() {

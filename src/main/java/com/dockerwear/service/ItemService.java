@@ -8,4 +8,5 @@ import java.util.List;
 public interface ItemService{
     List<Item> getItemList();
     List<Category> getCategories();
+    Item saveItem(Item item);
 }

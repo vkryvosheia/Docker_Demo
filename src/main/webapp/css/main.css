@@ -2048,6 +2048,7 @@ input.num-product::-webkit-inner-spin-button {
   position: absolute;
   bottom: -50px;
   left: 50%;
+  cursor: pointer;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -2055,8 +2056,13 @@ input.num-product::-webkit-inner-spin-button {
   transform: translateX(-50%);
 }
 
+.block2 {
+  width: 220px;
+}
+
 .block2-pic:hover .block2-btn {
   bottom: 20px;
+  left: 100px;
 }
 
 /*---------------------------------------------*/
@@ -3061,8 +3067,8 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .hov-img0 img{
-  width: 225px;
-  height: 225px;
+  width: 185px;
+  height: 250px;
   -webkit-transition: transform 0.9s ease;
   -o-transition: transform 0.9s ease;
   -moz-transition: transform 0.9s ease;

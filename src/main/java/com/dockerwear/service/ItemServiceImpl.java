@@ -31,4 +31,9 @@ public class ItemServiceImpl implements ItemService {
     public Item saveItem(Item item) {
         return itemDao.save(item);
     }
+
+    @Override
+    public Item getItem(int id) {
+        return itemDao.findById(id);
+    }
 }

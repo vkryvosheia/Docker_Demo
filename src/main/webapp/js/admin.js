@@ -44,10 +44,15 @@ app.controller('adminController', ['$scope', '$http', function ($scope, $http) {
         }
 
         var formData = new FormData();
-        formData.append('file', document.getElementById('input').files[0]);
+        var files = document.getElementById('input').files;
+        for(var index = 1; index < files.length + 1; index++){
+            formData.append('photo' + index, files[index-1]);
+        }
+
         formData.append('name', $scope.name);
         formData.append('price', $scope.price);
         formData.append('category', $scope.category.name);
+        formData.append('description', $scope.description);
         formData.append('amount', $scope.amount);
         formData.append('colors', JSON.stringify(colors));
         $.ajax({

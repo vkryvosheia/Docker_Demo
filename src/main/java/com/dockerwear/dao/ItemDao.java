@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ItemDao extends JpaRepository<Item, Integer> {
     List<Item> findAll();
+    Item findById(Integer id);
 }

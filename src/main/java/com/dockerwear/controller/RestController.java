@@ -2,6 +2,7 @@ package com.dockerwear.controller;
 
 import com.dockerwear.Model.Category;
 import com.dockerwear.Model.Color;
+import com.dockerwear.Model.FileUpload;
 import com.dockerwear.Model.Item;
 import com.dockerwear.service.ColorService;
 import com.dockerwear.service.ItemService;
@@ -38,6 +39,11 @@ public class RestController {
         return itemService.getItemList();
     }
 
+    @RequestMapping("/items/{id}")
+    @ResponseBody
+    public Item getItem(@PathVariable("id") int id){
+        return itemService.getItem(id);
+    }
     @RequestMapping("/colors")
     @ResponseBody
     public List<Color> getColors(){
@@ -46,22 +52,44 @@ public class RestController {
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
-    public Item uploadFile(@RequestParam("file") MultipartFile file,
+    public Item uploadFile(
+                             @RequestParam("photo1") MultipartFile photo1,
+                             @RequestParam(name="photo2", required = false) MultipartFile photo2,
+                             @RequestParam(name="photo3", required = false) MultipartFile photo3,
                              @RequestParam("name") String name,
                              @RequestParam("price") String price,
                              @RequestParam("category") String category,
                              @RequestParam("amount") int amount,
+                             @RequestParam("description") String description,
                              @RequestParam("colors") Object colors,
                              HttpServletRequest request){
 
         try {
-            String filePath = request.getServletContext().getRealPath("/") + "images\\catalog\\hats\\"+file.getOriginalFilename();
-            file.transferTo(new File(filePath));
+            String totalSrc = "";
+            if(photo1 != null) {
+                String fileName = "images\\catalog\\hats\\" + photo1.getOriginalFilename();
+                String filePath1 = request.getServletContext().getRealPath("/") + fileName;
+                photo1.transferTo(new File(filePath1));
+                totalSrc += fileName + ";";
+            }
+            if(photo2 != null) {
+                String fileName = "images\\catalog\\hats\\" + photo2.getOriginalFilename();
+                String filePath2 = request.getServletContext().getRealPath("/") + fileName;
+                photo2.transferTo(new File(filePath2));
+                totalSrc += fileName + ';';
+            }
+            if(photo3 != null) {
+                String fileName = "images\\catalog\\hats\\" + photo3.getOriginalFilename();
+                String filePath3 = request.getServletContext().getRealPath("/") + fileName;
+                photo3.transferTo(new File(filePath3));
+                totalSrc += fileName + ";";
+            }
             Item item = new Item();
             item.setName(name);
             item.setPrice(Double.parseDouble(price));
             item.setCategory(category);
             item.setAmount(amount);
+            item.setDescription(description);
             ObjectMapper mapper = new ObjectMapper();
             List<LinkedHashMap> colorsList = mapper.readValue((String) colors, ArrayList.class);
             List<Integer> colorIds = new ArrayList<>();
@@ -70,7 +98,7 @@ public class RestController {
             }
 
             item.setColors(colorService.findAll(colorIds));
-            item.setSrc("./images/catalog/hats/" + file.getOriginalFilename());
+            item.setSrc(totalSrc);
             return itemService.saveItem(item);
         }catch (IOException e){
             e.printStackTrace();

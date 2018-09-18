@@ -27,18 +27,21 @@ public class Item {
     @Column
     private String src;
     @Column
+    private String description;
+    @Column
     private double price;
 
 
     public Item(){}
     
-    public Item(int id, String name, String category, List<Color> colors, int amount, String src, double price) {
+    public Item(int id, String name, String category, List<Color> colors, int amount, String src, String description, double price) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.colors = colors;
         this.amount = amount;
         this.src = src;
+        this.description = description;
         this.price = price;
     }
 
@@ -96,5 +99,13 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

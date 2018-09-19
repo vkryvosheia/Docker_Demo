@@ -144,12 +144,12 @@
     $(window).on('load', function () {
         var $grid = $topeContainer.each(function () {
             $(this).isotope({
-                itemSelector: '.isotope-item',
+                itemSelector: '.',
                 layoutMode: 'fitRows',
                 percentPosition: true,
                 animationEngine : 'best-available',
                 masonry: {
-                    columnWidth: '.isotope-item'
+                    columnWidth: '.'
                 }
             });
         });

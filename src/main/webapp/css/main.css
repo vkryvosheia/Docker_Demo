@@ -1058,6 +1058,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   .header-cart-title {
     padding-bottom: 35px;
   }
+
+  .centered {
+    margin-left: 20%;
+  }
 }
 
 

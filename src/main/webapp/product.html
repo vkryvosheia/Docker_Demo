@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<meta HTTP-EQUIV="Expires" CONTENT="-1">
-	<script src="js/angular.min.js"></script>
 	<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
@@ -36,6 +35,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="js/angular.min.js"></script>
 	<script src="js/product.js"></script>
 <!--===============================================================================================-->
 </head>
@@ -562,9 +562,9 @@
 			</div>
 
 			<div class="row isotope-grid">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}" style="display: none"></div>
+				<div class="col-sm-4 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}" style="display: none"></div>
 
-				<div ng-repeat="item in items" class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}">
+				<div ng-repeat="item in items" class="col-sm-6 col-sm-auto col-md-4 col-lg-3 p-b-35 centered {{item.category}}" style="left: 10% !important;">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -584,13 +584,6 @@
 								<span class="stext-105 cl3">
 									{{item.price}} ГРН
 								</span>
-							</div>
-
-							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-								</a>
 							</div>
 						</div>
 					</div>

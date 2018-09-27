@@ -257,6 +257,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 
+.footer {
+  padding-bottom: 0;
+  padding-top: 30px;
+}
 /*---------------------------------------------*/
 .topbar-mobile li {
   padding: 8px 20px;
@@ -323,7 +327,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  height: 65%;
+  height: 90%;
   margin-right: 55px;
 }
 
@@ -367,7 +371,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu > li > a {
-  font-family: Poppins-Medium;
+  font-family: Arial;
+  font-weight: 700;
   font-size: 14px;
   color: #333;
   padding: 5px 0px;

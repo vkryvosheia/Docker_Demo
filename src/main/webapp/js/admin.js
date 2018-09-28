@@ -35,13 +35,13 @@ app.controller('adminController', ['$scope', '$http', function ($scope, $http) {
         //     alert('Не всі основні поля заповнені');
         //     return;
         // }
-
-        var colors = [];
-        for(var i = 0; i < $scope.colors.length; i++){
-            if($scope.colors[i].checked){
-                colors.push($scope.colors[i]);
-            }
-        }
+        //
+        // var colors = [];
+        // for(var i = 0; i < $scope.colors.length; i++){
+        //     if($scope.colors[i].checked){
+        //         colors.push($scope.colors[i]);
+        //     }
+        // }
 
         var formData = new FormData();
         var files = document.getElementById('input').files;
@@ -51,10 +51,7 @@ app.controller('adminController', ['$scope', '$http', function ($scope, $http) {
 
         formData.append('name', $scope.name);
         formData.append('price', $scope.price);
-        formData.append('category', $scope.category.name);
         formData.append('description', $scope.description);
-        formData.append('amount', $scope.amount);
-        formData.append('colors', JSON.stringify(colors));
         $.ajax({
             url: 'uploadFile',
             data: formData,

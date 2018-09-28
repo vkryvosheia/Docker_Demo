@@ -12,18 +12,18 @@ public class Item {
     private int id;
     @Column
     private String name;
-    @Column
-    private String category;
-    @Column
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "items_colors",
-            joinColumns = { @JoinColumn(name = "item_id") },
-            inverseJoinColumns = { @JoinColumn(name = "color_id") }
-    )
-    private List<Color> colors;
-    @Column
-    private int amount;
+//    @Column
+//    private String category;
+//    @Column
+//    @ManyToMany(cascade = { CascadeType.ALL })
+//    @JoinTable(
+//            name = "items_colors",
+//            joinColumns = { @JoinColumn(name = "item_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "color_id") }
+//    )
+//    private List<Color> colors;
+//    @Column
+//    private int amount;
     @Column
     private String src;
     @Column
@@ -34,12 +34,12 @@ public class Item {
 
     public Item(){}
     
-    public Item(int id, String name, String category, List<Color> colors, int amount, String src, String description, double price) {
+    public Item(int id, String name, String src, String description, double price) {
         this.id = id;
         this.name = name;
-        this.category = category;
-        this.colors = colors;
-        this.amount = amount;
+//        this.category = category;
+//        this.colors = colors;
+//        this.amount = amount;
         this.src = src;
         this.description = description;
         this.price = price;
@@ -59,30 +59,6 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public List<Color> getColors() {
-        return colors;
-    }
-
-    public void setColors(List<Color> colors) {
-        this.colors = colors;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     public String getSrc() {

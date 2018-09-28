@@ -1,6 +1,6 @@
-var main = angular.module('main', []);
+var main = angular.module('main', ['ngCookies']);
 
-main.controller('mainController', ['$scope', '$http', function ($scope, $http) {
+main.controller('mainController', ['$scope', '$http', '$cookies', function ($scope, $http, $cookies) {
 
     $http.get('/items').then(function(data){
         console.log(data);
@@ -30,5 +30,35 @@ main.controller('mainController', ['$scope', '$http', function ($scope, $http) {
         delete $scope.itemPhotos;
         $('.js-modal1').removeClass('show-modal1');
     };
+
+
+    $scope.removeFromCart = function(item) {
+        var idToDelete = $scope.cart.map(function(item) {
+            return item.id
+        }).indexOf(item.id);
+
+        $scope.cart.splice(idToDelete, 1);
+        if($scope.cart.length){
+            $cookies.put('cart', JSON.stringify($scope.cart));
+        } else {
+            $cookies.remove('cart');
+        }
+    };
+
+    $scope.showCartNumber = function () {
+        $scope.cart = $cookies.get('cart') ? JSON.parse($cookies.get('cart')) : [];
+    };
+
+    $scope.getCartTotal = function () {
+        var total = 0;
+        if ($scope.cart) {
+
+            $scope.cart.map(function (elem) {
+                total += elem.price * elem.amount;
+            });
+        }
+        return total;
+    }
+
 
 }]);

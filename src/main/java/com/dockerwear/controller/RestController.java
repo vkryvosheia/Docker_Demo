@@ -58,10 +58,7 @@ public class RestController {
                              @RequestParam(name="photo3", required = false) MultipartFile photo3,
                              @RequestParam("name") String name,
                              @RequestParam("price") String price,
-                             @RequestParam("category") String category,
-                             @RequestParam("amount") int amount,
                              @RequestParam("description") String description,
-                             @RequestParam("colors") Object colors,
                              HttpServletRequest request){
 
         try {
@@ -87,17 +84,7 @@ public class RestController {
             Item item = new Item();
             item.setName(name);
             item.setPrice(Double.parseDouble(price));
-            item.setCategory(category);
-            item.setAmount(amount);
             item.setDescription(description);
-            ObjectMapper mapper = new ObjectMapper();
-            List<LinkedHashMap> colorsList = mapper.readValue((String) colors, ArrayList.class);
-            List<Integer> colorIds = new ArrayList<>();
-            for(LinkedHashMap map: colorsList){
-                colorIds.add((Integer)map.get("id"));
-            }
-
-            item.setColors(colorService.findAll(colorIds));
             item.setSrc(totalSrc);
             return itemService.saveItem(item);
         }catch (IOException e){

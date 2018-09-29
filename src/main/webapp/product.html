@@ -218,9 +218,7 @@
 	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
 			<div class="row isotope-grid">
-				<div class="col-sm-4 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}" style="display: none"></div>
-
-				<div ng-repeat="item in items" class="col-sm-6 col-sm-auto col-md-4 col-lg-3 p-b-35 centered {{item.category}}" style="left: 10% !important;">
+				<div ng-repeat="item in items" class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{item.category}}">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -304,7 +302,7 @@
 								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="{{itemPhotos[0]}}">
+									<div class="item-slick3" ng-show="itemPhotos[0]" data-thumb="{{itemPhotos[0]}}">
 										<div class="wrap-pic-w pos-relative">
 											<img ng-src="{{itemPhotos[0]}}" alt="IMG-PRODUCT">
 
@@ -314,7 +312,7 @@
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="{{itemPhotos[1]}}">
+									<div class="item-slick3" ng-show="itemPhotos[1]" data-thumb="{{itemPhotos[1]}}">
 										<div class="wrap-pic-w pos-relative">
 											<img ng-src="{{itemPhotos[1]}}" alt="IMG-PRODUCT">
 
@@ -324,7 +322,7 @@
 										</div>
 									</div>
 
-									<div class="item-slick3" data-thumb="{{itemPhotos[2]}}">
+									<div class="item-slick3" ng-show="itemPhotos[2]" data-thumb="{{itemPhotos[2]}}">
 										<div class="wrap-pic-w pos-relative">
 											<img ng-src="{{itemPhotos[2]}}" alt="IMG-PRODUCT">
 
@@ -350,10 +348,8 @@
 
 							<p class="stext-102 cl3 p-t-23">
 								{{item.description}}
-								{{item.amount}}
 							</p>
-							
-							<!--  -->
+
 							<div class="p-t-33">
 
 								<div class="flex-w flex-r-m p-b-10">
